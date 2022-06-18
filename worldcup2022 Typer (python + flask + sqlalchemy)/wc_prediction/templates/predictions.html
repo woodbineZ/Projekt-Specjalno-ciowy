@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}
+    Predictions 
+{% endblock %}
+{% block content %}
+<div class="row" style="margin-top: 20px; margin-left: 20px;">
+    <div class="col-8">
+        <h2>Available teams to be selected as advanced</h2>
+        <p>Click on one of the teams to start selecting who will advance</p>
+        <br />
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <!-- Your Columns HERE -->
+                    <th scope="col">Group</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Your rows inside the table HERE: -->
+                {% for team in advanced_teams %}
+                {% include 'includes/teams_modals.html' %}
+                <tr>
+                    <td>{{ team.group }}</td>
+                    <td>{{ team.qualified_teams }}</td>
+                    <td>
+                        <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-TeamSelected-{{ team.qualified_teams }}">Advance</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-4">
+        <h2>Teams selected</h2>
+        <p>Click on "Not advance" to put the team back to the list of available teams</p>
+        <br />
+        <div class="row">
+            {% for team_p in teams_to_pop %}
+            {% include 'includes/teams_pop_modals.html' %}
+            <div class="col-md-6">
+                <div style="margin-bottom: 5px;" class="card text-center bg-dark">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ team_p.qualified_teams }}</h5>
+                        <button type="button" class="btn btn-outline-danger" style="margin-bottom: 5px;" data-toggle="modal" data-target="#Modal-TeamNotSelected-{{ team_p.qualified_teams }}">
+                            Not advance
+                        </button>
+                        <p class="card-text">
+                            <strong>
+                                This team plays in group {{ team_p.group }}
+                            </strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

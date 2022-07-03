@@ -5,7 +5,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///wc_prediction.db'
-app.config['SECRET_KEY'] = 'sadbahdh ah 5124 a da1231'
+app.config['SECRET_KEY'] = 'VERY TOUGH PASSWORD'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)

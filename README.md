@@ -1,2 +1,3 @@
-Few problems unresolved.
-to test the app firstly uncomment the text in routes.py then after registration stop the program, and comment it again.
+This applications allow you to create an account, login and logout.
+User logged in can also predict which team will advance from a group and change his decisions.
+Currently working on next phase which is knockout stage.
